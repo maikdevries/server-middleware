@@ -1,4 +1,7 @@
 {
+	"name": "@maikdevries/server-middleware",
+	"version": "0.1.0",
+	"exports": "./mod.ts",
 	"compilerOptions": {
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
@@ -30,6 +33,7 @@
 	},
 	"fmt": {
 		"include": [
+			"mod.ts",
 			"src/**/*.ts"
 		],
 		"bracePosition": "sameLine",
@@ -52,6 +56,7 @@
 	},
 	"lint": {
 		"include": [
+			"mod.ts",
 			"src/**/*.ts"
 		],
 		"rules": {
@@ -87,5 +92,13 @@
 				"workspace"
 			]
 		}
+	},
+	"publish": {
+		"include": [
+			"src/**/*.ts",
+			"LICENSE",
+			"mod.ts",
+			"README.md"
+		]
 	}
 }
