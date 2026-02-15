@@ -39,7 +39,7 @@ export type Empty = Record<never, never>;
  * @template A - First object type
  * @template B - Second object type
  *
- * @example
+ * @example Basic usage
  * ```ts
  * type A = { a: string; b: string };
  * type B = { a: never; b: number; c: boolean };
@@ -67,7 +67,7 @@ type CommonKeys<A, B> = {
  * @template B - Object type to merge (with exclusions)
  * @template C - Object type used to determine which `B` properties to exclude
  *
- * @example
+ * @example Basic usage
  * ```ts
  * type A = { x: number };
  * type B = { y: string; z: boolean };
