@@ -99,7 +99,7 @@ export function chain<R>(handler: Handler<R>): Handler<R>;
  * @returns Middleware chain
  *
  * @example Basic usage
- * ```ts
+ * ```ts ignore
  * const logger: Middleware<Empty, { id: string }> = ...;
  * const authorise: Middleware<Empty, { user: User }> = ...;
  * const handler: Handler<{ id: string, user: User }> = ...;
