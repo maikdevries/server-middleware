@@ -26,10 +26,8 @@ export type Middleware<R = Empty, P = Empty> = (
  *
  * @template R - Context properties that this middleware chain requires
  * @template P - Context properties that this middleware chain provides
- *
- * @internal
  */
-type Chain<R, P> = {
+export type Chain<R, P> = {
 	(request: Request, context: R, next: Handler<Merge<R, P>>): Response | Promise<Response>;
 
 	/**
