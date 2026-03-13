@@ -1,5 +1,8 @@
 import type { Empty, Middleware } from '@self';
 
+/**
+ * @experimental
+ */
 export interface Log {
 	'error'?: {
 		'reason': string;
@@ -16,6 +19,9 @@ export interface Log {
 	'timestamp': Temporal.Instant;
 }
 
+/**
+ * @experimental
+ */
 export function logger(): Middleware<Empty, { 'log': Log }> {
 	return async (request, context, next) => {
 		const log: Log = {
