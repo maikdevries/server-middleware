@@ -6,22 +6,26 @@
  *
  * @example Basic usage
  * ```ts
- * import type { Handler, Middleware } from '@maikdevries/server-middleware';
- * import { chain } from '@maikdevries/server-middleware';
+ * import { chain, type Empty, type Handler, type Middleware } from '@maikdevries/server-middleware';
  *
- * const uuid: Middleware<Empty, { uuid: string }> = async (request, context, next) => {
+ * const timing: Middleware = async (request, context, next) => {
+ * 	const start = self.performance.now();
+ * 	const response = await next(request, context);
+ * 	const end = self.performance.now();
+ *
+ * 	self.console.log(`[${(end - start).toFixed(2)} ms] ${request.method} ${request.url} - ${response.status}`);
+ * 	return response;
+ * };
+ *
+ * const uuid: Middleware<Empty, { 'uuid': string }> = async (request, context, next) => {
  * 	return await next(request, { ...context, 'uuid': self.crypto.randomUUID() });
  * };
  *
- * const authorise: Middleware<{ uuid: string }, { user: User }> = async (request, context, next) => {
- * 	return await next(request, { ...context, 'user': authoriseUser(context.uuid) });
+ * const respond: Handler<{ 'uuid': string }> = async (request, context) => {
+ * 	return new Response(`This request's unique UUID is ${context.uuid}`);
  * };
  *
- * const greeting: Handler<{ user: User }> = async (request, context) => {
- * 	return new Response(`Hi ${context.user.name}!`);
- * };
- *
- * const app = chain(uuid).add(authorise).add(greeting);
+ * const app = chain(timing).add(uuid).add(respond);
  * ```
  *
  * @module

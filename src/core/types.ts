@@ -3,9 +3,6 @@
  *
  * For overlapping keys, `B` takes precedence unless `B[K]` is `never`.
  *
- * @template A - First object type
- * @template B - Second object type
- *
  * @internal
  */
 type Common<A, B> = {
@@ -14,9 +11,6 @@ type Common<A, B> = {
 
 /**
  * Extracts properties from `A` that are not present in `B`.
- *
- * @template A - Source object type
- * @template B - Object type whose properties to exclude
  *
  * @internal
  */
@@ -36,9 +30,6 @@ export type Empty = Record<never, never>;
  *
  * For overlapping keys, `B` takes precedence unless `B[K]` is `never`.
  *
- * @template A - First object type
- * @template B - Second object type
- *
  * @example Basic usage
  * ```ts
  * type A = { a: string; b: string };
@@ -51,9 +42,6 @@ export type Merge<A, B> = Common<A, B> & Distinct<A, B> & Distinct<B, A>;
 /**
  * Extracts keys from `A` that have matching property types in `B`.
  *
- * @template A - First object type
- * @template B - Second object type
- *
  * @internal
  */
 type CommonKeys<A, B> = {
@@ -62,10 +50,6 @@ type CommonKeys<A, B> = {
 
 /**
  * Merges `A` with `B` while excluding properties from `B` that have matching types in `C`.
- *
- * @template A - Base object type (preserved entirely)
- * @template B - Object type to merge (with exclusions)
- * @template C - Object type used to determine which `B` properties to exclude
  *
  * @example Basic usage
  * ```ts
