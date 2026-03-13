@@ -16,7 +16,8 @@
 			"dom",
 			"dom.asynciterable",
 			"dom.iterable",
-			"deno.ns"
+			"deno.ns",
+			"deno.unstable"
 		],
 		"noErrorTruncation": true,
 		"noFallthroughCasesInSwitch": true,
