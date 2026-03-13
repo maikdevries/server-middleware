@@ -14,8 +14,8 @@ export type Handler<C = Empty> = (request: Request, context: C) => Response | Pr
 /**
  * Middleware function that intercepts HTTP requests and can modify the context before passing it to the next handler.
  *
- * The middleware receives the current context object of type `R`, to which it can add properties of type `P` and passes the merged context
- * to the next handler.
+ * The middleware receives the current context object of type `R`, to which it can add properties of type `P` and passes
+ * the merged context to the next handler.
  *
  * @template R - Context properties that this middleware requires
  * @template P - Context properties that this middleware provides
@@ -25,7 +25,11 @@ export type Handler<C = Empty> = (request: Request, context: C) => Response | Pr
  * @param next - Next {@link Handler} in the chain which receives the merged context
  * @returns HTTP {@link Response} (synchronously or as {@link Promise})
  */
-export type Middleware<R = Empty, P = Empty> = (request: Request, context: R, next: Handler<Merge<R, P>>) => Response | Promise<Response>;
+export type Middleware<R = Empty, P = Empty> = (
+	request: Request,
+	context: R,
+	next: Handler<Merge<R, P>>,
+) => Response | Promise<Response>;
 
 /**
  * A middleware chain that can be extended with {@link Middleware} and {@link Chain} or ended with a {@link Handler}.
@@ -61,7 +65,8 @@ type Chain<R, P> = {
 };
 
 /**
- * Composes two {@link Middleware} or one {@link Middleware} and one {@link Chain} or {@link Handler} into a single {@link Middleware}.
+ * Composes two {@link Middleware} or one {@link Middleware} and one {@link Chain} or {@link Handler} into a single
+ * {@link Middleware}.
  *
  * The first middleware receives the original context, the second receives the context modified by the first.
  *
@@ -78,12 +83,13 @@ function compose<RF, PF, RS, PS>(
 	first: Middleware<RF, PF>,
 	second: Middleware<RS, PS> | Chain<RS, PS> | Handler<RS>,
 ): Middleware<Reduce<RF, RS, PF>, Merge<PF, PS>> {
-	return (request, context, next) => first(request, context, (r, c) => second(r, c as RS, next as unknown as Handler<Merge<RS, PS>>));
+	return (request, context, next) =>
+		first(request, context, (r, c) => second(r, c as RS, next as unknown as Handler<Merge<RS, PS>>));
 }
 
 /**
- * This version should not be used in practice as it simply returns an unchanged copy of the input handler. This is included only to
- * achieve complete type safety.
+ * This version should not be used in practice as it simply returns an unchanged copy of the input handler. This is
+ * included only to achieve complete type safety.
  *
  * @ignore
  */

@@ -1,8 +1,8 @@
 /**
- * This module provides a flexible approach to define and compose contextful middleware functions in a type-safe manner. Each middleware
- * can specify both the context properties it requires and the properties it provides. A final request handler consumes the accumulated
- * context and produces a response. The type system ensures at compile-time that all required properties are provided by earlier middleware
- * in the chain.
+ * This module provides a flexible approach to define and compose contextful middleware functions in a type-safe manner.
+ * Each middleware can specify both the context properties it requires and the properties it provides. A final request
+ * handler consumes the accumulated context and produces a response. The type system ensures at compile-time that all
+ * required properties are provided by earlier middleware in the chain.
  *
  * @example Basic usage
  * ```ts
