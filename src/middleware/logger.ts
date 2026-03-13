@@ -13,7 +13,7 @@ export interface Log {
 	'response'?: {
 		'status': Response['status'];
 	};
-	'timestamp': number;
+	'timestamp': Temporal.Instant;
 }
 
 export function logger(): Middleware<Empty, { 'log': Log }> {
@@ -24,7 +24,7 @@ export function logger(): Middleware<Empty, { 'log': Log }> {
 				'method': request.method,
 				'url': request.url,
 			},
-			'timestamp': self.Date.now(),
+			'timestamp': Temporal.Now.instant(),
 		};
 
 		try {
