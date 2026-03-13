@@ -27,4 +27,4 @@
  * @module
  */
 
-export * from '@self/core';
+export { chain, type Empty, type Handler, type Middleware } from '@self/core';
