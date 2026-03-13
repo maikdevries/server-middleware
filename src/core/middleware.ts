@@ -1,4 +1,4 @@
-import type { Empty, Merge, Reduce } from './types.ts';
+import type { Empty, Merge, Reduce } from '@self/core';
 
 /**
  * A request handler that processes an HTTP request with optional context data.

@@ -103,5 +103,9 @@
 			"mod.ts",
 			"README.md"
 		]
+	},
+	"imports": {
+		"@self": "./mod.ts",
+		"@self/core": "./src/core/mod.ts"
 	}
 }

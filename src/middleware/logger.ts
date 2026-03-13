@@ -1,4 +1,4 @@
-import type { Empty, Middleware } from '@maikdevries/server-middleware';
+import type { Empty, Middleware } from '@self';
 
 export interface Log {
 	'error'?: {

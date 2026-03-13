@@ -27,4 +27,4 @@
  * @module
  */
 
-export * from './src/core/mod.ts';
+export * from '@self/core';
