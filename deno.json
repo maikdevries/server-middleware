@@ -13,6 +13,8 @@
 		"exactOptionalPropertyTypes": true,
 		"lib": [
 			"dom",
+			"dom.asynciterable",
+			"dom.iterable",
 			"deno.ns"
 		],
 		"noErrorTruncation": true,
