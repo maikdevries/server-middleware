@@ -1,4 +1,3 @@
-export type { Handler, Middleware } from './middleware.ts';
-export { chain } from './middleware.ts';
+export { chain, type Handler, type Middleware } from './middleware.ts';
 
-export type { Empty } from './types.ts';
+export type { Empty, Merge, Reduce } from './types.ts';

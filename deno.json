@@ -1,7 +1,10 @@
 {
 	"name": "@maikdevries/server-middleware",
 	"version": "0.2.0",
-	"exports": "./mod.ts",
+	"exports": {
+		".": "./mod.ts",
+		"./core": "./src/core/mod.ts"
+	},
 	"compilerOptions": {
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
