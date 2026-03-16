@@ -28,6 +28,12 @@ export type Middleware<R = Empty, P = Empty> = (
  * @template P - Context properties that this middleware chain provides
  */
 export type Chain<R, P> = {
+	/**
+	 * This call signature should not be used in practice as the middleware chain has not been closed with a
+	 * {@link Handler}. This is defined only to achieve complete type safety.
+	 *
+	 * @ignore
+	 */
 	(request: Request, context: R, next: Handler<Merge<R, P>>): Response | Promise<Response>;
 
 	/**
@@ -56,7 +62,7 @@ function compose<RF, PF, RS, PS>(
 }
 
 /**
- * This function should not be used in practice as it simply returns an unchanged copy of the input handler. This is
+ * This function should not be used in practice as it simply returns an unchanged copy of the supplied handler. This is
  * defined only to achieve complete type safety.
  *
  * @ignore
