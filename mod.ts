@@ -13,19 +13,19 @@
  * 	const response = await next(request, context);
  * 	const end = self.performance.now();
  *
- * 	self.console.log(`[${(end - start).toFixed(2)} ms] ${request.method} ${request.url} - ${response.status}`);
+ * 	self.console.log(`[${(end - start).toFixed(2)} ms] ${response.status} - ${request.method} ${request.url}`);
  * 	return response;
  * };
  *
- * const uuid: Middleware<Empty, { 'uuid': string }> = async (request, context, next) => {
- * 	return await next(request, { ...context, 'uuid': self.crypto.randomUUID() });
+ * const uuid: Middleware<Empty, { 'uuid': string }> = (request, context, next) => {
+ * 	return next(request, { ...context, 'uuid': self.crypto.randomUUID() });
  * };
  *
- * const respond: Handler<{ 'uuid': string }> = async (request, context) => {
+ * const respond: Handler<{ 'uuid': string }> = (request, context) => {
  * 	return new Response(`This request's unique UUID is ${context.uuid}`);
  * };
  *
- * const app = chain(timing).add(uuid).add(respond);
+ * const app = (request: Request) => chain(timing).add(uuid).add(respond)(request, {});
  * ```
  *
  * @module
