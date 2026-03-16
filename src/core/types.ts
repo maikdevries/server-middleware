@@ -20,8 +20,6 @@ type Distinct<A, B> = {
 
 /**
  * An empty object type that accepts no properties.
- *
- * Equivalent to `{}` but explicit in intent.
  */
 export type Empty = Record<never, never>;
 
