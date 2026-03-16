@@ -24,27 +24,27 @@ export type Middleware<R = Empty, P = Empty> = (
  * A middleware chain that can either be extended with {@link Middleware} and other {@link Chain | Chains}, or closed
  * with a single {@link Handler}.
  *
- * @template R - Context properties that this middleware chain requires
- * @template P - Context properties that this middleware chain provides
+ * @template RF - Context properties that this middleware chain requires
+ * @template PF - Context properties that this middleware chain provides
  */
-export type Chain<R, P> = {
+export type Chain<RF, PF> = {
 	/**
 	 * This call signature should not be used in practice as the middleware chain has not been closed with a
 	 * {@link Handler}. This is defined only to achieve complete type safety.
 	 *
 	 * @ignore
 	 */
-	(request: Request, context: R, next: Handler<Merge<R, P>>): Response | Promise<Response>;
+	(request: Request, context: RF, next: Handler<Merge<RF, PF>>): Response | Promise<Response>;
 
 	/**
 	 * Closes the chain by appending a {@link Handler} and returning the complete request handler.
 	 */
-	add<RS>(handler: Handler<RS>): Handler<Reduce<R, RS, P>>;
+	add<R>(handler: Handler<R>): Handler<Reduce<RF, R, PF>>;
 
 	/**
 	 * Extends the chain by appending a {@link Middleware} or {@link Chain}, which optionally expands the context.
 	 */
-	add<RS, PS>(next: Middleware<RS, PS> | Chain<RS, PS>): Chain<Reduce<R, RS, P>, Merge<P, PS>>;
+	add<R, P>(next: Middleware<R, P> | Chain<R, P>): Chain<Reduce<RF, R, PF>, Merge<PF, P>>;
 };
 
 /**
