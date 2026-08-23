@@ -1,6 +1,6 @@
 // [SPEC] https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json
 {
-	"name": "@maikdevries/server-middleware",
+	"name": "@disconnected/web-middleware",
 	"version": "0.3.1",
 	"exports": {
 		".": "./mod.ts",

@@ -6,7 +6,7 @@
  *
  * @example Basic usage
  * ```ts
- * import { chain, type Empty, type Handler, type Middleware } from '@maikdevries/server-middleware';
+ * import { chain, type Empty, type Handler, type Middleware } from '@disconnected/web-middleware';
  *
  * const timing: Middleware = async (request, context, next) => {
  * 	const start = self.performance.now();

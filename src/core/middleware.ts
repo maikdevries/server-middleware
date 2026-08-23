@@ -74,7 +74,7 @@ export function chain<R>(handler: Handler<R>): Handler<R>;
  *
  * @example Basic usage
  * ```ts
- * import { chain, type Empty, type Handler, type Middleware } from '@maikdevries/server-middleware/core';
+ * import { chain, type Empty, type Handler, type Middleware } from '@disconnected/web-middleware/core';
  *
  * const timing: Middleware = async (request, context, next) => {
  * 	const start = self.performance.now();
